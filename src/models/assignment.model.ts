@@ -6,7 +6,7 @@ interface Assignment_interface extends Document{
     description : string;
     userId : mongoose.Types.ObjectId;
     adminId : mongoose.Types.ObjectId;
-    status : 'pending' | 'accepted' | 'rejected';
+    status : 'pending' | 'accepted' | 'rejected' | 'completed';
 };
 
 const assignmentSchema = new Schema<Assignment_interface>({
