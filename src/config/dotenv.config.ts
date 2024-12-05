@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 
-const loadEnvCongif = () => {
+const loadEnvCongifMongoDB = () => {
     const envFile = `.env.${process.env.NODE_ENV || 'development'}`;
     dotenv.config({path : envFile});
 
@@ -9,4 +9,4 @@ const loadEnvCongif = () => {
     }
 };
 
-export default loadEnvCongif;
+export default loadEnvCongifMongoDB;
