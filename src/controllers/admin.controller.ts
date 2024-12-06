@@ -48,7 +48,7 @@ export const adminLogin = async(req : Request, res : Response) => {
     try {
         const admin = await Admin.findOne({adminEmail : email});
         if(!admin){
-            return res.status(400).json({message : 'EMail not found'});
+            return res.status(400).json({message : 'Email not found'});
         }
 
         const validPassword = await bcrypt.compare(password, admin.adminPassword);
