@@ -6,7 +6,7 @@ on:
       - main
 
 permissions:
-  contents: write  
+  contents: write
 
 jobs:
   auto-commit:
@@ -16,18 +16,25 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Run Changes Script
+      - name: Make Changes
         run: |
-          echo "This is a change made by the pipeline on $(date)" >> README.md
+          echo "Automated change made by pipeline on $(date)" >> README.md
 
       - name: Configure Git
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
 
-      - name: Commit and Push Changes
+      - name: Commit Changes
         run: |
-          git pull --rebase origin main
           git add .
           git commit -m "Automated commit on $(date)" || echo "No changes to commit"
-          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git main
+
+      - name: Stash and Pull Changes
+        run: |
+          git stash
+          git pull --rebase origin main
+          git stash pop || echo "No stash to apply"
+
+      - name: Push Changes
+        run: git push origin main
