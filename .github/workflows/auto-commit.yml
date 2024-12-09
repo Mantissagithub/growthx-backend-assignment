@@ -1,0 +1,28 @@
+name: Auto Commit Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Run Changes Script
+        run: | echo "This is a change made by the pipeline on $(date)" >> README.md
+
+      - name: Configure Git
+        run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+      
+      - name: Commit and push changes
+        run: |
+        git add .
+        git commit -m "Automated commit on $(date)" || echo "NO changes to commit"
+        git push origin main

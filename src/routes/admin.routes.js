@@ -1,0 +1,16 @@
+"use strict";
+exports.__esModule = true;
+var express_1 = require("express");
+var admin_controller_1 = require("../controllers/admin.controller");
+var auth_middleware_1 = require("../middlewares/auth.middleware");
+var router = (0, express_1.Router)();
+router.post('/register', admin_controller_1.registerAdmin);
+router.post('/login', admin_controller_1.adminLogin);
+router.post('/all', auth_middleware_1.authMiddleware['admin'], admin_controller_1.getAdmins);
+router.post('/profile', auth_middleware_1.authMiddleware['admin'], admin_controller_1.updateAdminProfile);
+router.post('/assignments', auth_middleware_1.authMiddleware['admin'], admin_controller_1.getAssignnments);
+router.post('/assignments/:id/accept', auth_middleware_1.authMiddleware['admin'], admin_controller_1.acceptAssignment);
+router.post('/assignments/:id/reject', auth_middleware_1.authMiddleware['admin'], admin_controller_1.rejectAssignment);
+router.post('/assignments/:id/complete', auth_middleware_1.authMiddleware['admin'], admin_controller_1.completeAssignment);
+router.post('/assignments/:id/pending', auth_middleware_1.authMiddleware['admin'], admin_controller_1.markAssignmentPending);
+exports["default"] = router;
