@@ -14,7 +14,8 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run Changes Script
-        run: | echo "This is a change made by the pipeline on $(date)" >> README.md
+        run: | 
+        echo "This is a change made by the pipeline on $(date)" >> README.md
 
       - name: Configure Git
         run: |
