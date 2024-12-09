@@ -42,7 +42,7 @@ export const userRegister = async (req : Request, res : Response) => {
     }
 };
 
-export const userLgin = async (req : Request, res : Response) => {
+export const userLogin = async (req : Request, res : Response) => {
     const  {email, password} = req.body;
 
     try {
@@ -63,7 +63,7 @@ export const userLgin = async (req : Request, res : Response) => {
     }
 };
 
-export const uploaAssignment = async (req: Request, res : Response) => {
+export const uploadAssignment = async (req: Request, res : Response) => {
     const {task, adminEMail} = req.body;
     const userId = req.user.userId;
     const id = uuidv4();
@@ -145,7 +145,7 @@ export const updateUser = async (req : Request, res : Response) => {
     }
 };
 
-export const deletUser = async (req: Request, res : Response) => {
+export const deleteUser = async (req: Request, res : Response) => {
     try{
         const deletedUser = await User.findOneAndDelete({userId : req.user.userId});
 
