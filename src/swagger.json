@@ -3,7 +3,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "GrowthX backend task",
-    "description": "Automated swagger rdocumentation for growthx backend task",
+    "description": "Automated swagger documentation for growthx backend task",
     "version": "1.0.0"
   },
   "servers": [
